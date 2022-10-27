@@ -1,8 +1,8 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"go-simple-rest-application/controller"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -13,25 +13,13 @@ func main() {
 	r := chi.NewRouter()
 
 	//Get Last price
-	r.Get("/getprice/last", getprice.lastPrice{})
+	r.Get("/getprice/last", controller.Lastprice())
 
 	//Get price by timestamp
-	r.Get("/getprice/bytimestamp", func(w http.ResponseWriter, r *http.Request) {
-		type items struct {
-			message string
-		}
-		i := items{"message"}
-		json.NewEncoder(w).Encode(i)
-	})
+	r.Get("/getprice/bytimestamp", controller.Bytimestamp())
 
 	//Get average price
-	r.Get("/getprice/average", func(w http.ResponseWriter, r *http.Request) {
-		type items struct {
-			message string
-		}
-		i := items{"message"}
-		json.NewEncoder(w).Encode(i)
-	})
+	r.Get("/getprice/average", controller.Average())
 	fmt.Println("Serving on port: " + port)
 	http.ListenAndServe(port, r)
 }

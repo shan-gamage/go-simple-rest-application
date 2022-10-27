@@ -1,4 +1,4 @@
-module github.com/shan-gamage/go-simple-rest-application
+module go-simple-rest-application
 
 go 1.19
 
