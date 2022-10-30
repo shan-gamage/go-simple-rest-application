@@ -29,13 +29,17 @@ func main() {
 	r := chi.NewRouter()
 
 	//Get Last price
-	r.Get("/getprice/last", controller.Lastprice(dbcon))
+	// r.Get("/getprice/last", controller.Lastprice(dbcon))
 
 	//Get price by timestamp
-	r.Get("/getprice/bytimestamp", controller.Bytimestamp(dbcon))
-
+	// r.Get("/getprice/bytimestamp", controller.Bytimestamp(dbcon))
+	r.Route("/getprice", func(r chi.Router) {
+		r.Get("/last", controller.Lastprice(dbcon))
+		r.Get("/bytimestamp", controller.Bytimestamp(dbcon))
+		r.Get("/average", controller.Average(dbcon))
+	})
 	//Get average price
-	r.Get("/getprice/average", controller.Average(dbcon))
+	// r.Get("/getprice/average", controller.Average(dbcon))
 	f.Println("Serving on port: " + port)
 	http.ListenAndServe(port, r)
 }
