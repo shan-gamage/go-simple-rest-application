@@ -63,7 +63,7 @@ Parameters :  starttime="Start time stamp"
               
 REQUEST
   
-  http://localhost:8002/getprice/average?starttime=1666964013&endtime=1666964133
+  http://localhost:8080/getprice/average?starttime=1666964013&endtime=1666964133
   
   
 RESPONSE
