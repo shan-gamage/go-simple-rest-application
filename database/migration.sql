@@ -13,4 +13,4 @@ INSERT INTO `exchange_rate` (`assest_type`, `exchange_type`, `rate`) VALUES
 ('BTC','USD', '20666.591743189555'),
 ('BTC','USD', '20667.691743189556'),
 ('BTC','USD', '20668.791743189557'),
-('BTC','USD', '20669.891743189558'),
+('BTC','USD', '20669.891743189558')

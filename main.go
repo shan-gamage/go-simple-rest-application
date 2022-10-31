@@ -15,7 +15,7 @@ import (
 func main() {
 
 	var dbcon = dbconnection.Connector()
-	for t := range time.Tick(6000 * time.Second) {
+	for t := range time.Tick(60 * time.Second) {
 		f.Printf("working %s \n", t)
 		var resultobject = controller.Updateprice()
 		result, err := model.Createrecord(dbcon, resultobject)
@@ -28,7 +28,7 @@ func main() {
 
 	//
 
-	port := ":8002"
+	port := ":8080"
 	r := chi.NewRouter()
 	r.Route("/getprice", func(r chi.Router) {
 		r.Get("/last", controller.Lastprice(dbcon))

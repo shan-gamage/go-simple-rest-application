@@ -8,7 +8,7 @@ import (
 )
 
 func Connector() *sql.DB {
-	db, err := sql.Open("mysql", "root:mysqltoor@tcp(go-simple-rest-application-db)/cryptoprice")
+	db, err := sql.Open("mysql", "root:mysqltoor@tcp(localhost:3306)/cryptoprice")
 	if err != nil {
 		f.Println("Error validating sql.Open argument")
 		panic(err.Error())
