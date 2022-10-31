@@ -1,80 +1,48 @@
 FORMAT: 1A
-HOST: https://polls.apiblueprint.org/
+HOST: http://localhost:8080/
 
 # gorestapplication
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+This REST application to support retrive BTCUSD data from our system
 
-## Questions Collection [/questions]
+## Get latest Price Collection [/getprice/last?type=BTC]
 
-### List All Questions [GET]
+### Get last price [GET]
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+        { 
+            "RATE": 0.00,
+            "CreatedAt": "2006-01-02 15:04:05",
+            "Message": "SUCCESS/system error"
         }
 
-+ Response 201 (application/json)
+## Get price by timestamp Collection [/getprice/bytimestamp?timestamp=1666964013]
 
-    + Headers
+### Get the price at a given timestamp [GET]
 
-            Location: /questions/2
+get the price at a given timestamp, come up with a way to serve a price if you don't have price at the requested second
 
-    + Body
 
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
++ Response 200 (application/json)
+
+        { 
+            "RATE": 123.32123,
+            "CreatedAt": "2006-01-02 15:04:05",
+            "Message": "SUCCESS/system error",
+            "NearestRate" : 0.00
+        }
+        
+        
+## Get price by timestamp Collection [/getprice/average?starttime=1666964013&endtime=1666964133]
+
+### Get Average [GET]
+
+compute the average price in a time range
+
++ Response 200 (application/json)
+
+        {
+            "RATE": 0.00,
+            "Message": "SUCCESS/system error"
+        }
